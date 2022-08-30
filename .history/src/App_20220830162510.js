@@ -5,17 +5,14 @@ import * as tt from "@tomtom-international/web-sdk-maps";
 function App() {
   const mapElement = useRef();
   const [map, setMap] = useState({});
-  const [longitude, setLongitude] = useState(-74.7249514586466);
-  const [latitude, setLatitude] = useState(4.135592629235007);
+  const [state, setstate] = useState(initialState)
+  const longitude = -74.7249514586466;
+  const latitude = 4.135592629235007;
 
   useEffect(() => {
     let map = tt.map({
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
-      stylesVisibility: {
-        trafficIncidents: true,
-        trafficFlow: true,
-      },
       center: [longitude, latitude],
       zoom: 14,
     });
