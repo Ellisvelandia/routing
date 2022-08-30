@@ -1,12 +1,10 @@
 .app {
-  height: 600px;
-  width: 100vw;
+  height:600px;
+  width:;
 }
 
 .map {
-  margin: auto 0;
   height: 800px;
-  width: 100%;
 }
 
 .marker {
