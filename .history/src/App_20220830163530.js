@@ -37,13 +37,13 @@ function App() {
               setLongitude(e.target.value);
             }}
           />
-          <input
+            <input
             type="text"
-            id="latitude"
-            className="latitude"
-            placeholder="Put in Latitude"
+            id="longitude"
+            className="longitude"
+            placeholder="Put in Longitude"
             onChange={(e) => {
-              setLatitude(e.target.value);
+              setLongitude(e.target.value);
             }}
           />
         </div>

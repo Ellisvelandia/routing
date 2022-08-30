@@ -37,7 +37,7 @@ function App() {
               setLongitude(e.target.value);
             }}
           />
-          <input
+            <input
             type="text"
             id="latitude"
             className="latitude"
