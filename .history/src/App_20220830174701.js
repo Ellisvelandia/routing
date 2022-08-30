@@ -37,10 +37,10 @@ function App() {
 
   return (
     <>
-    { map && <div className="app">
+    {  <div className="app">
         <div ref={mapElement} className="map" />
         <div className="search=-bar">
-          <h1> Where to ? </h1>
+          <h1> Where to ? </h1>{" "}
           <input
             type="text"
             id="longitude"
@@ -49,7 +49,7 @@ function App() {
             onChange={(e) => {
               setLongitude(e.target.value);
             }}
-          />
+          />{" "}
           <input
             type="text"
             id="latitude"
@@ -58,9 +58,9 @@ function App() {
             onChange={(e) => {
               setLatitude(e.target.value);
             }}
-          />
-        </div>
-      </div>}
+          />{" "}
+        </div>{" "}
+      </div>{" "}
     </>
   );
 }

@@ -20,27 +20,14 @@ function App() {
       zoom: 14,
     });
     setMap(map);
-
-    const addMarker = () => {
-      const element = document.createElement("div");
-      element.className = "marker";
-      const marker = new tt.Marker({
-        draggable: true,
-        element: element,
-      });
-    };
-
-    addMarker();
-
-    return () => map.remove();
-  }, [longitude, latitude]);
+  }, []);
 
   return (
     <>
-    { map && <div className="app">
-        <div ref={mapElement} className="map" />
+      <div className="app">
+        <div ref={mapElement} />
         <div className="search=-bar">
-          <h1> Where to ? </h1>
+          <h1>Where to?</h1>
           <input
             type="text"
             id="longitude"
@@ -60,7 +47,7 @@ function App() {
             }}
           />
         </div>
-      </div>}
+      </div>
     </>
   );
 }

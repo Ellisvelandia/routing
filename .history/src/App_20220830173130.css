@@ -4,10 +4,8 @@
 
 .marker {
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNYbAf78ph8tZbWs3qx_ccjLYkACWAq5Pf2Q&usqp=CAU");
-  background-size: cover;
-  width: 22px;
-  height: 22px;
-  background-color: yellow;
-  border-radius: 11px;
-  border: solid 3px darkslategray;
+  background-size:cover;
+  width:22px;
+  height:22px;
+  background-color: ;
 }
