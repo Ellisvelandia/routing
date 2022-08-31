@@ -25,17 +25,17 @@ function App() {
       map.removeSource("route");
     }
     map.addLayer({
-      id: "route",
-      type: "line",
+      id: 'route',
+      type:'line',
       source: {
-        type: "geojson",
-        data: geoJson,
+        type: 'geojson',
+        data: geoJson
       },
       paint: {
-        "line-color": "red",
-        "line-width": 6,
-      },
-    });
+        'line-color': 'red',
+        'line-width': 6
+      }
+    })
   };
 
   const addDeliveryMarker = (lngLat, map) => {
@@ -140,7 +140,7 @@ function App() {
           })
           .then((routeData) => {
             const geoJson = routeData.toGeoJson();
-            drawRoute(geoJson, map);
+            
           });
       });
     };
@@ -148,7 +148,6 @@ function App() {
     map.on("click", (e) => {
       destinations.push(e.lngLat);
       addDeliveryMarker(e.lngLat, map);
-      recalculateRoutes();
     });
 
     return () => map.remove();

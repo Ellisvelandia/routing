@@ -148,7 +148,6 @@ function App() {
     map.on("click", (e) => {
       destinations.push(e.lngLat);
       addDeliveryMarker(e.lngLat, map);
-      recalculateRoutes();
     });
 
     return () => map.remove();
