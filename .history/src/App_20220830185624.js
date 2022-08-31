@@ -14,19 +14,9 @@ function App() {
     return {
       point: {
         latitude: lngLat.lat,
-        longitude: lngLat.lng,
+        longitude: lng.lng,
       },
     };
-  };
-
-  const addDeliveryMarker = (lngLat, map) => {
-    const element = document.createElement("div");
-    element.className = "marker-delivery";
-    new tt.Marker({
-      element: element,
-    })
-      .setLngLat(lngLat)
-      .addTo(map);
   };
 
   useEffect(() => {
@@ -34,9 +24,6 @@ function App() {
       lng: longitude,
       lat: latitude,
     };
-
-    const destinations = [];
-
     let map = tt.map({
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
@@ -78,42 +65,24 @@ function App() {
 
     addMarker();
 
-    const sortDestinations = (locations) => {
-      const pointsForDestinations = locations.map((destination) => {
-        return convertToPoints(destination);
-      });
-      const callParameters = {
-        key: process.env.REACT_APP_TOM_TOM_API_KEY,
-        destinations: pointsForDestinations,
-        origins: [convertToPoints(origin)],
-      };
+    // const pointsForDestination = locations.map
 
-      return new Promise((resolve, reject) => {
-        ttapi.services.
-        matrixRouting(callParameters)
-        .then((matrixAPIResults) => {
-          const results = matrixAPIResults.matrix[0]
-          const resultsArray = results.map((result, index) => {
-            return {
-              location: locations[index],
-              drivingtime: result.response.routeSummary.travelTimeInSeconds,
-            }
-          })
-          resultsArray.sort((a, b) => {
-            return a.drivingtime - b.drivingtime
-          })
-          const sortedLocations = resultsArray.map ((result) => {
-            return result.location 
-          })
-          resolve(sortedLocations)
-        })
-      })
-    }
+    // const callParameters = {
+    //   key: process.env.REACT_APP_TOM_TOM_API_KEY,
+    //   destinations: pointsForDestination,
+    //   origins: [convertToPoints(origin)],
+    // }
 
-    map.on("click", (e) => {
-      destinations.push(e.lngLat);
-      addDeliveryMarker(e.lngLat, map);
-    });
+    // return new Promise((resolve, reject) => {
+    //   ttapi.services.
+    //   matrixRouting(callParameters)
+    // })
+
+    const destinations = []
+    map.on('click', (e) => {
+      destinations.push(e.lngLat)
+      addDeliveryMarker
+    })
 
     return () => map.remove();
   }, [longitude, latitude]);

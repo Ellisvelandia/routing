@@ -14,7 +14,7 @@ function App() {
     return {
       point: {
         latitude: lngLat.lat,
-        longitude: lngLat.lng,
+        longitude: lng.lng,
       },
     };
   };
@@ -78,37 +78,17 @@ function App() {
 
     addMarker();
 
-    const sortDestinations = (locations) => {
-      const pointsForDestinations = locations.map((destination) => {
-        return convertToPoints(destination);
-      });
-      const callParameters = {
-        key: process.env.REACT_APP_TOM_TOM_API_KEY,
-        destinations: pointsForDestinations,
-        origins: [convertToPoints(origin)],
-      };
+    const pointsForDestination = locations.map;
 
-      return new Promise((resolve, reject) => {
-        ttapi.services.
-        matrixRouting(callParameters)
-        .then((matrixAPIResults) => {
-          const results = matrixAPIResults.matrix[0]
-          const resultsArray = results.map((result, index) => {
-            return {
-              location: locations[index],
-              drivingtime: result.response.routeSummary.travelTimeInSeconds,
-            }
-          })
-          resultsArray.sort((a, b) => {
-            return a.drivingtime - b.drivingtime
-          })
-          const sortedLocations = resultsArray.map ((result) => {
-            return result.location 
-          })
-          resolve(sortedLocations)
-        })
-      })
-    }
+    const callParameters = {
+      key: process.env.REACT_APP_TOM_TOM_API_KEY,
+      destinations: pointsForDestination,
+      origins: [convertToPoints(origin)],
+    };
+
+    return new Promise((resolve, reject) => {
+      ttapi.services.matrixRouting(callParameters);
+    });
 
     map.on("click", (e) => {
       destinations.push(e.lngLat);

@@ -19,8 +19,4 @@
   border: solid 3px darkslategray;
 }
 
-.marker-delivery {
-  width: 22px;
-  height: 22px;
-  background-color: red;
-}
+.marker-delivery

@@ -91,7 +91,7 @@ function App() {
       return new Promise((resolve, reject) => {
         ttapi.services.
         matrixRouting(callParameters)
-        .then((matrixAPIResults) => {
+        .then((matrixAPIResults.matrix) => {
           const results = matrixAPIResults.matrix[0]
           const resultsArray = results.map((result, index) => {
             return {
@@ -108,7 +108,7 @@ function App() {
           resolve(sortedLocations)
         })
       })
-    }
+    };
 
     map.on("click", (e) => {
       destinations.push(e.lngLat);
